@@ -118,6 +118,23 @@ chmod -R 777 /usr/local/nginx/logs/
 ## start nginx
 this starts nginx as foreground daemon
 `sudo /usr/local/nginx/sbin/nginx -g 'daemon off;'`
-you can start nginx as background daemon
+ or you can start nginx as background daemon
 `sudo /usr/local/nginx/sbin/nginx -t`
+
+Now setup is ready for streaming.
+
+## stream your contents using ffmpeg 
+```
+sudo ffmpeg -i sample.mp4 -vcodec libx264 -vprofile baseline -g 30 -acodec aac -f flv rtmp://localhost/live/stream1
+```
+stream1 must be unique name and should not use for another stream at the same time. 'live' is the context under rtmp drective mentioned in nginx.conf file.
+Here sample.mp4 is prerecorded file streamed to rtmp port. nginx server will stream from rtmp to client.
+
+## test your stream
+option 1:
+test using VLC player 'play from network stream' option. if /mnt/hls is default location of HLS used in nginx.conf file then URL which has to be used for testing is "http://localhost:8080/hls/stream1.m3u8" or  "http://you IP address:8080/hls/stream1.m3u8"
+option 2:
+Use any HLS player available over the internet
+for example http://player.streamingtvguides.com/
+
 
