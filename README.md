@@ -45,7 +45,7 @@ cross check latest version and install it
   nano /usr/local/nginx/conf/nginx.conf
  
 ```
-sample configuration file is as follows
+sample configuration file is as follows, copy following contents to /usr/local/nginx/conf/nginx.conf
 ```
 worker_processes  auto;
 events {
@@ -110,4 +110,14 @@ http {
     }
 }
 ```
-`sudo apt-get install git`
+make sure  logs folder is writable, where nginx debug logs created
+```
+chmod -R 777 /usr/local/nginx/logs/*
+chmod -R 777 /usr/local/nginx/logs/
+``` 
+## start nginx
+this starts nginx as foreground daemon
+`sudo /usr/local/nginx/sbin/nginx -g 'daemon off;'`
+you can start nginx as background daemon
+`sudo /usr/local/nginx/sbin/nginx -t`
+
