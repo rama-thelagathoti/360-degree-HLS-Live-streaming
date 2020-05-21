@@ -34,7 +34,16 @@ cross check latest version and install it
  make -j 4
  sudo make install
  
-``
-
+```
+## configure nginx
+```
+  whereis nginx /* path where nginx server is installed*/
+  nano /usr/local/nginx/conf/nginx.conf
+  /*if nano is not installed use gedit*/
+  /*if there are any permission issue run following command also*/
+  sudo chmod -R 777 /usr/local/nginx/conf/nginx.conf
+  nano /usr/local/nginx/conf/nginx.conf
+ 
+```
 
 `sudo apt-get install git`
